@@ -32,22 +32,36 @@ async function play() {
         baseurl = baseurl.concat('/rps');
     }
 
+    var url = baseurl.concat('/play/');
+
+    if (!document.getElementById('rd').checked) {
+        let shot = '';
+        if (document.getElementById('rock').checked)
+            shot = 'rock';
+        if (document.getElementById('paper').checked)
+            shot = 'paper';
+        if (document.getElementById('scissors').checked)
+            shot = 'scissors';
+        if (document.getElementById('lizard').checked)
+            shot = 'lizard';
+        if (document.getElementById('spock').checked)
+            shot = 'spock';
+
+        url = url.concat(shot);
+        let response = await fetch(url);
+        let result = await response.json();
+        let output = 'You chose ' + result.player + '! ' + 'Opponent chose ' + result.opponent + '! You ' + result.result + '!';
+        document.getElementById("results").innerHTML = output;
+    }
+    else {
+        let response = await fetch(url);
+        let result = await response.json();
+        document.getElementById("results").innerHTML = result.player;
+    }
+
     document.getElementById('play').style.display = "none";
     document.getElementById('selection').style.display = "none";
     document.getElementById('rules').style.display = "none";
-    var url = baseurl.concat('/play/');
-
-    if (!document.getElementById('opp').check) {
-        let response = await fetch(url);
-        let result = await response.json();
-        console.log(result.player);
-        document.getElementById("results").innerHTML = result.player;
-    }
-    else {
-
-        url = url.concat();
-    }
-    
     document.getElementById("results").style.display = 'block';
 }
 
