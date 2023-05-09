@@ -160,8 +160,3 @@ app.get('/app/rpsls/play/:arg', (req, res) => {
 app.get("*", function (req, res) {
     res.status(404).send('404 NOT FOUND');
 });
-
-// Set app to listen on port
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
