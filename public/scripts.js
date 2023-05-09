@@ -19,6 +19,9 @@ function selection() {
             document.getElementById('rpslsShots').style.display = "none";
         }
     }
+    else {
+        document.getElementById('rpsShots').style.display = "none";
+    }
 }
 
 // Logic for game play with requests to api
@@ -65,10 +68,30 @@ async function play() {
     document.getElementById("results").style.display = 'block';
 }
 
+// Reset page
 function reset() {
-
+    document.getElementById('play').style.display = "block";
+    document.getElementById('selection').style.display = "block";
+    document.getElementById('rules').style.display = "block";
+    document.getElementById("results").style.display = 'none';
+    document.getElementById('rulesText').style.display = "none";
+    
+    // Reset radios
+    document.getElementById("rps").checked = true;
+    document.getElementById("rd").checked = true;
+    document.getElementById('rpslsShots').style.display = "none";
+    document.getElementById('rpsShots').style.display = "none";
 }
 
+// Rules display
 function rules() {
+    document.getElementById('rulesText').style.display = "block";
+
+    document.getElementById('play').style.display = "none";
+    document.getElementById('selection').style.display = "none";
+    document.getElementById('rules').style.display = "none";
+    document.getElementById("results").style.display = 'none';
+    
+    // Reset radios
 
 }
