@@ -2,6 +2,14 @@
 // check out the coin-server example from a previous COMP 426 semester.
 // https://github.com/jdmar3/coinserver
 
+window.addEventListener('unload', function(event) {
+    // Reset radios and display
+    document.getElementById("rps").checked = true;
+    document.getElementById("rd").checked = true;
+    document.getElementById("rock").checked = true;
+    document.getElementById('rpslsShots').style.display = "none";
+    document.getElementById('rpsShots').style.display = "none";
+  });
 
 // Handles button appearance for selected items
 function selection() {
@@ -41,14 +49,16 @@ async function play() {
         let shot = '';
         if (document.getElementById('rock').checked)
             shot = 'rock';
-        if (document.getElementById('paper').checked)
+        else if (document.getElementById('paper').checked)
             shot = 'paper';
-        if (document.getElementById('scissors').checked)
+        else if (document.getElementById('scissors').checked)
             shot = 'scissors';
-        if (document.getElementById('lizard').checked)
+        else if (document.getElementById('lizard').checked)
             shot = 'lizard';
-        if (document.getElementById('spock').checked)
+        else if (document.getElementById('spock').checked)
             shot = 'spock';
+        else
+            document.getElementById('rock').checked = true;
 
         url = url.concat(shot);
         let response = await fetch(url);
@@ -71,17 +81,7 @@ async function play() {
 
 // Reset page
 function reset() {
-    document.getElementById('selection').style.display = "block";
-    document.getElementById('play').style.display = "block";
-    document.getElementById('rules').style.display = "block";
-    document.getElementById("results").style.display = 'none';
-    document.getElementById('rulesText').style.display = "none";
-    
-    // Reset radios
-    document.getElementById("rps").checked = true;
-    document.getElementById("rd").checked = true;
-    document.getElementById('rpslsShots').style.display = "none";
-    document.getElementById('rpsShots').style.display = "none";
+    window.location.reload();
 }
 
 // Rules display
