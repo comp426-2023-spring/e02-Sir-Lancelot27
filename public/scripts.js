@@ -59,7 +59,8 @@ async function play() {
     else {
         let response = await fetch(url);
         let result = await response.json();
-        document.getElementById("results").innerHTML = result.player;
+        let output = "You get " + result.player + "!";
+        document.getElementById("results").innerHTML = output;
     }
 
     document.getElementById('play').style.display = "none";
@@ -70,8 +71,8 @@ async function play() {
 
 // Reset page
 function reset() {
-    document.getElementById('play').style.display = "block";
     document.getElementById('selection').style.display = "block";
+    document.getElementById('play').style.display = "block";
     document.getElementById('rules').style.display = "block";
     document.getElementById("results").style.display = 'none';
     document.getElementById('rulesText').style.display = "none";
